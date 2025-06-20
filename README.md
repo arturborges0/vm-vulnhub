@@ -1,10 +1,8 @@
 <p align="center">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Anonymous_emblem.svg" alt="Anonymous Logo" width="200">
+ 
 </p>
 
 # 🐚 VulnHub - CTF Labs 🚩
-
-> "We are Anonymous. We are Legion. We do not forgive. We do not forget."
 
 ---
 
@@ -32,5 +30,5 @@ Este conteúdo é apenas para fins **educacionais** e **éticos**, seguindo os p
 ---
 
 <p align="center">
-  <img src="https://i.imgur.com/qZ0zI2Q.png" alt="Hack The Planet" width="300">
+  
 </p>
