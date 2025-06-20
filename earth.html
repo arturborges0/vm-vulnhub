@@ -1,23 +1,32 @@
----
-title: Exploração da Máquina XYZ
-layout: default
----
+Earth - VM VulnHub: Easy
+Earth é uma das três Virtual Machines CTF criadas por SirFlash. O objetivo é obter o acesso root e capturar a flag. 
+Você pode fazer o download neste link: https://www.vulnhub.com/series/the-planets,362/
+Agora vou detalhar o passo a passo de como foi o caminho até chegar na tão desejada bandeira (flag).
+Introdução
 
-# Exploração da Máquina XYZ - CTF
+Ligue a VM Earth e também ligue seu Kali Linux. O máximo que você vai obter da máquina Earth é a página de login que se apresentará à você dessa maneira:
+https://cdn-images-1.medium.com/max/800/1*EBurhjmtGiniH2WwE58DfA.png
 
-## Enumeração
+2. Enumeração de Rede
+A VM Earth e o Kali Linux precisam estar em Modo Bridge ou Host-Only para que possam se comunicar, caso contrário, nada feito. 
+Deduzo que você já saiba disso, mas caso não saiba, dê uma estudada sobre essas conexões de rede antes de tentar um scan.
+Entre no seu terminal Kali e vamos fazer um scan na rede para encontrar quais IPs estão conectados em sua rede local. Pois bem, no seu terminal como root, escreva netdiscover. 
+O netdiscover é uma ferramenta de reconhecimento de rede para descobrir endereços IP ativos, endereços MAC e fabricantes de dispositivos conectados a uma rede local (LAN).
+https://cdn-images-1.medium.com/max/800/1*xRGHKv1kN-r_DEF-3Dat0g.png
 
-Fiz um scan com nmap:
+Esse é o resultado da pesquisa, tenho cinco IPs conectados na minha rede LAN e preciso descobrir qual é a VM. 
+Aqui vai uma dica que vai facilitar sua vida: O prefixo 08:00:27 é um Organizationally Unique Identifier (OUI) da fabricante Oracle Corporation, que é quem faz o VirtualBox. 
+Ou seja, como você está rodando a VM Earth no VirtualBox e o MAC 08:00:27 é do Oracle / VirtualBox, logo você sabe que esse é o IP que você vai explorar e tentar invadir.
 
-nmap -sC -sV 192.168.1.10
+3. Enumeração de Serviços
+Agora é preciso saber quais serviços estão rodando e em quais portas no IP da sua VM Earth. Essa etapa é fundamental para poder direcionar suas tentativas de ataques. 
+No seu terminal Kali, execute o seguinte comando: nmap -sC -sV -p- -Pn <SEU_IP>
+Esse foi o resultado: 
+https://cdn-images-1.medium.com/max/800/1*jLhOnDgj6R3uAnLRsYbBbQ.png
 
+  Analisando o resultado percebemos que três portas estão abertas. Sendo elas: 22/tcp - ssh - OpenSSH 8.6, 80/tcp - http - Apache 2.4.51, 443/tcp - ssl/https - Apache 2.4.51. 
+  Também percebemos que existem dois domínios scaneados: http://earth.local e https://terratest.earth.local.
 
-## Exploração
-
-Descobri uma vulnerabilidade...
-
-## Pós-exploração
-
-Obtive a flag: `flag{exemplo}`
-
-[Voltar para o índice](./index.html)
+  Aqui preciso explicar um pouco sobre o http e https desses domínios porque na minha primeira tentativa acabei sofrendo um pouco pela minha falta de atenção.  
+  Os dois domínios (earth.local e terratest.earth.local) estão configurados como Virtual Hosts no Apache, significando que o servidor usa o nome do host (Host Header) + protoloco (HTTP ou HTTPS) para entregar o conteúdo correto. 
+  Ou seja, o Apache pode ter conteúdo diferente para o mesmo domínio dependendo se for HTTP ou HTTPS.
