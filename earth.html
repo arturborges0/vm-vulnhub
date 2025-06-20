@@ -16,6 +16,7 @@
     }
     h1, h2, h3 {
       color: #00adb5;
+      text-align: center;
     }
     p {
       margin-bottom: 16px;
@@ -41,21 +42,28 @@
       border-radius: 8px;
       margin: 10px 0;
       box-shadow: 0 0 10px rgba(0,0,0,0.5);
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
     }
-    header img {
-      width: 100px;
+    header {
+      margin-bottom: 30px;
     }
-    footer img {
-      width: 80px;
-      margin-top: 20px;
+    .banner {
+      width: 100%;
+      max-height: 300px;
+      object-fit: contain;
+      margin: 0 auto 30px auto;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0,173,181,0.8);
     }
   </style>
 </head>
 <body>
 
 <header>
-  <img src="https://upload.wikimedia.org/wikipedia/commons/4/4b/Kali_Linux_2.0_wordmark.svg" alt="Kali Linux Logo">
   <h1>Earth - VM VulnHub: Easy</h1>
+  <img class="banner" src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Anonymous_emblem.svg" alt="Anonymous 2D Logo" />
 </header>
 
 <p>Earth é uma das três Virtual Machines CTF criadas por SirFlash. O objetivo é obter o acesso root e capturar a flag.</p>
@@ -120,10 +128,6 @@
 <p>Aqui preciso explicar um pouco sobre o HTTP e HTTPS desses domínios porque na minha primeira tentativa acabei sofrendo um pouco pela minha falta de atenção.</p>
 
 <p>Os dois domínios (<code>earth.local</code> e <code>terratest.earth.local</code>) estão configurados como Virtual Hosts no Apache, significando que o servidor usa o nome do host (Host Header) + protocolo (HTTP ou HTTPS) para entregar o conteúdo correto. Ou seja, o Apache pode ter conteúdo diferente para o mesmo domínio dependendo se for HTTP ou HTTPS.</p>
-
-<footer>
-  <img src="https://upload.wikimedia.org/wikipedia/commons/3/35/Tux.svg" alt="Linux Tux Logo">
-</footer>
 
 </body>
 </html>
