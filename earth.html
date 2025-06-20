@@ -13,13 +13,16 @@ title: Exploração da Máquina Earth - VulnHub
 
 <h2>Introdução</h2>
 
-<p>Ligue a VM Earth e o Kali Linux. A primeira coisa que você verá é a página de login:</p>
+<p>Ligue a VM Earth e o Kali Linux. A primeira e única coisa que você verá da VM Earth é a página de login:</p>
 
 <img src="https://cdn-images-1.medium.com/max/800/1*EBurhjmtGiniH2WwE58DfA.png" alt="Tela de Login da Earth">
 
 <h2>Enumeração de Rede</h2>
 
-<p>Coloque as máquinas no modo Bridge ou Host-Only.</p>
+<p>Entre no seu terminal Kali e vamos fazer um scan na rede para encontrar quais IPs estão conectados em sua rede local. A VM Earth e o Kali Linux
+precisam estar em Modo Bridge ou Host-Only para que possam se comunicar, caso contrário, nada feito. Deduzo que você já saiba disso, mas caso não saiba,
+dê uma estudada sobre essas conexões de rede antes de testar um scan. Pois bem, no seu terminal como root, escreva netdiscover. O netdiscover é uma ferramenta
+de reconhecimento de rede para descobrir endereços IP ativos, endereços MAC e fabricantes de dispositivos conectados a uma rede local (LAN).</p>
 
 <p>Comando usado para descobrir o IP da VM:</p>
 
