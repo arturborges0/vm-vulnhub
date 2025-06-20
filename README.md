@@ -4,6 +4,8 @@
 
 # VulnHub - CTF Labs 🚩
 
+> *"The quieter you become, the more you are able to hear."*
+
 ---
 
 🕶️ **Bem-vindo ao meu laboratório de Pentest!**  
