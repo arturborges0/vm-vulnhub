@@ -1,7 +1,55 @@
 ---
-title: Earth - VM VulnHub: Easy 🌍
 layout: default
+title: Exploração da Máquina Earth - VulnHub
 ---
+
+<h1>🌍 Exploração da Máquina Earth - VulnHub</h1>
+
+<p>Earth é uma das três Virtual Machines CTF criadas por SirFlash. O objetivo é obter o acesso root e capturar a flag.</p>
+
+<p>📥 Download da máquina: <a href="https://www.vulnhub.com/series/the-planets,362/">https://www.vulnhub.com/series/the-planets,362/</a></p>
+
+<h2>Introdução</h2>
+
+<p>Ligue a VM Earth e o Kali Linux. A primeira coisa que você verá é a página de login:</p>
+
+<img src="https://cdn-images-1.medium.com/max/800/1*EBurhjmtGiniH2WwE58DfA.png" alt="Tela de Login da Earth">
+
+<h2>Enumeração de Rede</h2>
+
+<p>Coloque as máquinas no modo Bridge ou Host-Only.</p>
+
+<p>Comando usado para descobrir o IP da VM:</p>
+
+<pre><code>netdiscover</code></pre>
+
+<p>Exemplo de resultado:</p>
+
+<img src="https://cdn-images-1.medium.com/max/800/1*xRGHKv1kN-r_DEF-3Dat0g.png" alt="Resultado Netdiscover">
+
+<h2>Enumeração de Serviços</h2>
+
+<p>Scan de portas com Nmap:</p>
+
+<pre><code>nmap -sC -sV -p- -Pn &lt;SEU_IP&gt;</code></pre>
+
+<p>Exemplo de resultado:</p>
+
+<img src="https://cdn-images-1.medium.com/max/800/1*jLhOnDgj6R3uAnLRsYbBbQ.png" alt="Resultado Nmap">
+
+<h3>Serviços encontrados:</h3>
+
+<ul>
+<li>22/tcp - SSH - OpenSSH 8.6</li>
+<li>80/tcp - HTTP - Apache 2.4.51</li>
+<li>443/tcp - HTTPS - Apache 2.4.51</li>
+</ul>
+
+<h2>Conclusão parcial</h2>
+
+<p>Essa foi a fase de enumeração inicial da máquina Earth. Nos próximos passos, vamos explorar vulnerabilidades nos serviços expostos.</p>
+
+<p><a href="./index.html">⬅️ Voltar ao índice</a></p>
 
 
 
