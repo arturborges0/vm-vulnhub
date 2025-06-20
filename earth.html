@@ -1,34 +1,7 @@
 ---
-title: Exploração da Máquina Earth - VulnHub
+title: Earth - VM VulnHub: Easy 🌍
 layout: default
 ---
 
-# Earth - VM VulnHub: Easy 🌍
 
-Earth é uma das três Virtual Machines CTF criadas por **SirFlash**.  
-O objetivo é obter o acesso root e capturar a **flag**.
 
-📥 Você pode fazer o download da máquina aqui:  
-[https://www.vulnhub.com/series/the-planets,362/](https://www.vulnhub.com/series/the-planets,362/)
-
----
-
-## 📝 Introdução
-
-Ligue a VM **Earth** e também o seu **Kali Linux**.  
-O máximo que você verá inicialmente da Earth é uma página de login como esta:
-
-![Página de Login da Earth](https://cdn-images-1.medium.com/max/800/1*EBurhjmtGiniH2WwE58DfA.png)
-
----
-
-## 🌐 2. Enumeração de Rede
-
-A VM Earth e o Kali Linux devem estar em **Modo Bridge** ou **Host-Only**, para conseguirem se comunicar.
-
-👉 Se você não sabe configurar esses modos, recomendo estudar um pouco sobre configurações de rede no VirtualBox.
-
-Agora vamos encontrar o IP da VM usando o seguinte comando no Kali:
-
-```bash
-netdiscover
