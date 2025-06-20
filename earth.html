@@ -26,11 +26,15 @@ de reconhecimento de rede para descobrir endereços IP ativos, endereços MAC e 
 
 <p>Comando usado para descobrir o IP da VM:</p>
 
-<code>netdiscover</code>
+<pre><code>netdiscover</code></pre>
 
 <p>Exemplo de resultado:</p>
 
 <img src="https://cdn-images-1.medium.com/max/800/1*xRGHKv1kN-r_DEF-3Dat0g.png" alt="Resultado Netdiscover">
+
+<p>Esse é o resultado da pesquisa, tenho cinco IPs conectados na minha rede LAN e preciso descobrir qual é a VM. Aqui vai uma dica que vai facilitar sua vida:
+O <b>prefixo 08:00:27</b> é um Organizationally Unique Identifier (OUI) da fabricante <b>Oracle Corporation</b>, que é quem faz o <b>VirtualBox</b>. Ou seja, como você está rodando
+a VM Earth no VirtualBox e o MAC 08:00:27 é do Oracle / VirtualBox, logo você sabe que esse é o IP que você vai explorar e tentar invadir</p>
 
 <h2>Enumeração de Serviços</h2>
 
