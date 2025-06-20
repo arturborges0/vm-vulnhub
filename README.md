@@ -2,7 +2,7 @@
  
 </p>
 
-# 🐚 VulnHub - CTF Labs 🚩
+# VulnHub - CTF Labs 🚩
 
 ---
 
