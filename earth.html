@@ -7,15 +7,15 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      max-width: 800px;
+      max-width: 900px;
       margin: auto;
       padding: 20px;
       line-height: 1.6;
-      background-color: #f9f9f9;
-      color: #333;
+      background-color: #121212;
+      color: #e0e0e0;
     }
     h1, h2, h3 {
-      color: #2c3e50;
+      color: #00adb5;
     }
     p {
       margin-bottom: 16px;
@@ -23,80 +23,107 @@
       text-align: justify;
     }
     code {
-      background-color: #eee;
+      background-color: #1e1e1e;
       padding: 2px 4px;
       border-radius: 4px;
+      color: #00ff00;
       font-family: monospace;
     }
     a {
-      color: #2980b9;
+      color: #00adb5;
       text-decoration: none;
     }
     a:hover {
       text-decoration: underline;
     }
+    img {
+      max-width: 100%;
+      border-radius: 8px;
+      margin: 10px 0;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    }
+    header img {
+      width: 100px;
+    }
+    footer img {
+      width: 80px;
+      margin-top: 20px;
+    }
   </style>
 </head>
 <body>
 
+<header>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/4/4b/Kali_Linux_2.0_wordmark.svg" alt="Kali Linux Logo">
   <h1>Earth - VM VulnHub: Easy</h1>
+</header>
 
-  <p>Earth é uma das três Virtual Machines CTF criadas por SirFlash. O objetivo é obter o acesso root e capturar a flag.</p>
+<p>Earth é uma das três Virtual Machines CTF criadas por SirFlash. O objetivo é obter o acesso root e capturar a flag.</p>
 
-  <p>Você pode fazer o download neste link: <a href="https://www.vulnhub.com/series/the-planets,362/" target="_blank">https://www.vulnhub.com/series/the-planets,362/</a></p>
+<p>Você pode fazer o download neste link: <a href="https://www.vulnhub.com/series/the-planets,362/" target="_blank">https://www.vulnhub.com/series/the-planets,362/</a></p>
 
-  <p>Agora vou detalhar o passo a passo de como foi o caminho até chegar na tão desejada bandeira (flag).</p>
+<p>Agora vou detalhar o passo a passo de como foi o caminho até chegar na tão desejada bandeira (flag).</p>
 
-  <h2>Introdução</h2>
+<h2>Introdução</h2>
 
-  <p>Ligue a VM Earth e também ligue seu Kali Linux. O máximo que você vai obter da máquina Earth é a página de login que se apresentará à você dessa maneira:</p>
+<p>Ligue a VM Earth e também ligue seu Kali Linux. O máximo que você vai obter da máquina Earth é a página de login que se apresentará à você dessa maneira:</p>
 
-  <p><strong>Login VM Earth - E será o máximo que terá dela.</strong></p>
+<img src="https://cdn-images-1.medium.com/max/800/1*EBurhjmtGiniH2WwE58DfA.png" alt="Login VM Earth">
 
-  <h2>2. Enumeração de Rede</h2>
+<p><strong>Login VM Earth - E será o máximo que terá dela.</strong></p>
 
-  <p>Entre no seu terminal Kali e vamos fazer um scan na rede para encontrar quais IPs estão conectados em sua rede local. A VM Earth e o Kali Linux precisam estar em Modo Bridge ou Host-Only para que possam se comunicar, caso contrário, nada feito.</p>
+<h2>2. Enumeração de Rede</h2>
 
-  <p>Deduzo que você já saiba disso, mas caso não saiba, dê uma estudada sobre essas conexões de rede antes de tentar um scan.</p>
+<p>Entre no seu terminal Kali e vamos fazer um scan na rede para encontrar quais IPs estão conectados em sua rede local. A VM Earth e o Kali Linux precisam estar em Modo Bridge ou Host-Only para que possam se comunicar, caso contrário, nada feito.</p>
 
-  <p>Pois bem, no seu terminal como root, escreva: <code>netdiscover</code>.</p>
+<p>Deduzo que você já saiba disso, mas caso não saiba, dê uma estudada sobre essas conexões de rede antes de tentar um scan.</p>
 
-  <p>O netdiscover é uma ferramenta de reconhecimento de rede para descobrir endereços IP ativos, endereços MAC e fabricantes de dispositivos conectados a uma rede local (LAN).</p>
+<p>Pois bem, no seu terminal como root, escreva: <code>netdiscover</code>.</p>
 
-  <p><strong>Minha VM Earth está no IP 192.168.18.57 - Como descobrir a sua?</strong></p>
+<p>O netdiscover é uma ferramenta de reconhecimento de rede para descobrir endereços IP ativos, endereços MAC e fabricantes de dispositivos conectados a uma rede local (LAN).</p>
 
-  <p>Esse é o resultado da pesquisa, tenho cinco IPs conectados na minha rede LAN e preciso descobrir qual é a VM. Aqui vai uma dica que vai facilitar sua vida:</p>
+<img src="https://cdn-images-1.medium.com/max/800/1*xRGHKv1kN-r_DEF-3Dat0g.png" alt="Resultado Netdiscover">
 
-  <p>O prefixo <code>08:00:27</code> é um Organizationally Unique Identifier (OUI) da fabricante Oracle Corporation, que é quem faz o VirtualBox. Ou seja, como você está rodando a VM Earth no VirtualBox e o MAC <code>08:00:27</code> é do Oracle / VirtualBox, logo você sabe que esse é o IP que você vai explorar e tentar invadir.</p>
+<p><strong>Minha VM Earth está no IP 192.168.18.57 - Como descobrir a sua?</strong></p>
 
-  <h2>3. Enumeração de Serviços</h2>
+<p>Esse é o resultado da pesquisa, tenho cinco IPs conectados na minha rede LAN e preciso descobrir qual é a VM. Aqui vai uma dica que vai facilitar sua vida:</p>
 
-  <p>Agora é preciso saber quais serviços estão rodando e em quais portas no IP da sua VM Earth. Essa etapa é fundamental para poder direcionar suas tentativas de ataques.</p>
+<p>O prefixo <code>08:00:27</code> é um Organizationally Unique Identifier (OUI) da fabricante Oracle Corporation, que é quem faz o VirtualBox. Ou seja, como você está rodando a VM Earth no VirtualBox e o MAC <code>08:00:27</code> é do Oracle / VirtualBox, logo você sabe que esse é o IP que você vai explorar e tentar invadir.</p>
 
-  <p>No seu terminal Kali, execute o seguinte comando: <code>nmap -sC -sV -p- -Pn &lt;SEU_IP&gt;</code></p>
+<h2>3. Enumeração de Serviços</h2>
 
-  <p>Esse foi o resultado:</p>
+<p>Agora é preciso saber quais serviços estão rodando e em quais portas no IP da sua VM Earth. Essa etapa é fundamental para poder direcionar suas tentativas de ataques.</p>
 
-  <p>Recomendo pesquisar sobre o comando <code>nmap -sC -sV -p- -Pn</code> para aprender o que cada caractere faz.</p>
+<p>No seu terminal Kali, execute o seguinte comando: <code>nmap -sC -sV -p- -Pn &lt;SEU_IP&gt;</code></p>
 
-  <p>Analisando o resultado percebemos que três portas estão abertas. Sendo elas:</p>
+<img src="https://cdn-images-1.medium.com/max/800/1*jLhOnDgj6R3uAnLRsYbBbQ.png" alt="Resultado Nmap">
 
-  <ul>
-    <li>22/tcp - SSH - OpenSSH 8.6</li>
-    <li>80/tcp - HTTP - Apache 2.4.51</li>
-    <li>443/tcp - SSL/HTTPS - Apache 2.4.51</li>
-  </ul>
+<p>Esse foi o resultado:</p>
 
-  <p>Também percebemos que existem dois domínios scaneados:</p>
+<p>Recomendo pesquisar sobre o comando <code>nmap -sC -sV -p- -Pn</code> para aprender o que cada caractere faz.</p>
 
-  <ul>
-    <li><a href="http://earth.local">http://earth.local</a></li>
-    <li><a href="https://terratest.earth.local">https://terratest.earth.local</a></li>
-  </ul>
+<p>Analisando o resultado percebemos que três portas estão abertas. Sendo elas:</p>
 
-  <p>Aqui preciso explicar um pouco sobre o HTTP e HTTPS desses domínios porque na minha primeira tentativa acabei sofrendo um pouco pela minha falta de atenção.</p>
+<ul>
+  <li>22/tcp - SSH - OpenSSH 8.6</li>
+  <li>80/tcp - HTTP - Apache 2.4.51</li>
+  <li>443/tcp - SSL/HTTPS - Apache 2.4.51</li>
+</ul>
 
-  <p>Os dois domínios (<code>earth.local</code> e <code>terratest.earth.local</code>) estão configurados como Virtual Hosts no Apache, significando que o servidor usa o nome do host (Host Header) + protocolo (HTTP ou HTTPS) para entregar o conteúdo correto. Ou seja, o Apache pode ter conteúdo diferente para o mesmo domínio dependendo se for HTTP ou HTTPS.</p>
+<p>Também percebemos que existem dois domínios scaneados:</p>
+
+<ul>
+  <li><a href="http://earth.local">http://earth.local</a></li>
+  <li><a href="https://terratest.earth.local">https://terratest.earth.local</a></li>
+</ul>
+
+<p>Aqui preciso explicar um pouco sobre o HTTP e HTTPS desses domínios porque na minha primeira tentativa acabei sofrendo um pouco pela minha falta de atenção.</p>
+
+<p>Os dois domínios (<code>earth.local</code> e <code>terratest.earth.local</code>) estão configurados como Virtual Hosts no Apache, significando que o servidor usa o nome do host (Host Header) + protocolo (HTTP ou HTTPS) para entregar o conteúdo correto. Ou seja, o Apache pode ter conteúdo diferente para o mesmo domínio dependendo se for HTTP ou HTTPS.</p>
+
+<footer>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/3/35/Tux.svg" alt="Linux Tux Logo">
+</footer>
 
 </body>
 </html>
