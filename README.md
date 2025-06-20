@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="/assets/css/custom.css">
+
 # VulnHub - CTF
 
 Aqui é onde compartilho análises técnicas detalhadas sobre a exploração de máquinas virtuais em ambientes controlados.
