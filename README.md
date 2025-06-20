@@ -1,5 +1,5 @@
 # VulnHub - CTF
-Aqui é o lugar em que faço análises técnicas sobre invasões em máquinas virtuais em ambientes controlados. 
+Aqui é onde compartilho análises técnicas detalhadas sobre a exploração de máquinas virtuais em ambientes controlados.
 
 ## Máquinas [VulnHub](https://www.vulnhub.com/) ☠️
 
