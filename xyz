@@ -1,0 +1,23 @@
+---
+title: Exploração da Máquina XYZ
+layout: default
+---
+
+# Exploração da Máquina XYZ - CTF
+
+## Enumeração
+
+Fiz um scan com nmap:
+
+nmap -sC -sV 192.168.1.10
+
+
+## Exploração
+
+Descobri uma vulnerabilidade...
+
+## Pós-exploração
+
+Obtive a flag: `flag{exemplo}`
+
+[Voltar para o índice](./index.html)
