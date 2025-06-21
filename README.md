@@ -8,7 +8,7 @@
 
 ---
 
-🕶️ **Bem-vindo ao meu laboratório de Pentest!**  
+**Bem-vindo ao meu laboratório de Pentest!**  
 
 Aqui é onde compartilho **análises técnicas detalhadas** sobre a exploração de máquinas virtuais em **ambientes controlados e educativos**.  
 
