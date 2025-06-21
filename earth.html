@@ -122,5 +122,50 @@
 
 <p>Os dois domínios (<code>earth.local</code> e <code>terratest.earth.local</code>) estão configurados como Virtual Hosts no Apache, significando que o servidor usa o nome do host (Host Header) + protocolo (HTTP ou HTTPS) para entregar o conteúdo correto. Ou seja, o Apache pode ter conteúdo diferente para o mesmo domínio dependendo se for HTTP ou HTTPS.</p>
 
+<h2>4. Exploração WEB</h2>
+
+<p>Agora que você descobriu dois domínios durante o scan com o Nmap, é hora de investigar o que existe neles.</p>
+
+<p>Se você abrir o navegador dentro do Kali Linux e tentar acessar:</p>
+
+<ul>
+  <li><code>http://earth.local</code></li>
+  <li><code>https://terratest.earth.local</code></li>
+</ul>
+
+<p>Provavelmente vai se deparar com um erro como <strong>"Bad Request"</strong>, ou o navegador pode simplesmente não conseguir se conectar.<br>
+Mas... <strong>por quê?</strong></p>
+
+<p>Quando você digita um domínio como <code>earth.local</code> no navegador, o Kali precisa <strong>resolver esse nome para um endereço IP</strong>, processo que acontece através do <strong>DNS (Domain Name System)</strong>.</p>
+
+<p>Porém, como estamos trabalhando em um <strong>ambiente de laboratório sem um servidor DNS real</strong>, o Kali <strong>não sabe para qual IP esses domínios devem apontar</strong>.</p>
+  
+<p>O Kali (assim como outros sistemas Linux) possui um arquivo chamado <code>/etc/hosts</code>.<br>
+Esse arquivo funciona como uma <strong>tabela de resolução de nomes local</strong>, que o sistema consulta <strong>antes de tentar acessar um servidor DNS externo</strong>.</p>
+
+<p><strong>&#128073; É como dizer manualmente ao sistema:</strong></p>
+
+<blockquote>
+  Quando alguém tentar acessar o domínio <code>earth.local</code>, envie o tráfego para o IP <code>192.168.18.57</code>.
+</blockquote>
+
+<h3>Exemplo Prático:</h3>
+
+<p>Suponha que o IP da sua máquina-alvo seja:</p>
+
+<pre>
+192.168.18.57
+</pre>
+
+<p>Você deve adicionar a seguinte linha ao arquivo <code>/etc/hosts</code>:</p>
+
+<pre>
+192.168.18.57   earth.local terratest.earth.local
+</pre>
+
+<h3>&#9989; Resultado esperado após a configuração:</h3>
+
+<p>Depois de salvar, ao tentar acessar os domínios no navegador novamente, o Kali vai <strong>direcionar o tráfego para o IP correto</strong>, e você já poderá explorar o conteúdo dos sites de teste hospedados nesses domínios.</p>
+
 </body>
 </html>
