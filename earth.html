@@ -182,10 +182,45 @@ Esse arquivo funciona como uma <strong>tabela de resolução de nomes local</str
   <p>A única coisa que temos da página inicial do terratest é uma linda mensagem escrita: <strong>Test site, please ignore.</strong>
   Com qual desses dois sites você entraria e tomaria uma xícara de chá?🍵</p>
 
-  <p>Vamos começar no earth.local rodando o <span style="color:orange;">Gobuster. 🕵🏼‍♂️</span>
+  <p>Vamos começar no earth.local rodando o <span style="color:orange;">Gobuster.🕵🏼‍♂️</span>
   O Gobuster é uma ferramenta de força bruta de diretórios, arquivos ou subdomínios em um servidor web.
   Ele vai nos ajudar a descobrir pastas ocultas, arquivos sensíveis e até pontos de entrada não listados
-  no site, que o navedaor normal não mostraria.</p>
+  no site, que o navegador normal não mostraria.</p>
+
+   <h2>  ▶ Vou dar um exemplo de uso do gobuster no <code>earth.local</code>):</h2>
+
+<p>Quando você acessa <code>http://earth.local</code> no navegador, você só vê a <strong>página inicial</strong> (o que o servidor nos mostra por padrão).<br>
+Mas pode haver <strong>várias outras pastas ou arquivos escondidos</strong> por trás desse domínio.</p>
+
+<h3>➡️Exemplos de coisas que o Gobuster pode encontrar:</h3>
+
+<table border="1" cellspacing="0" cellpadding="5">
+  <tr>
+    <th>Tipo</th>
+    <th>Exemplos</th>
+  </tr>
+  <tr>
+    <td>Diretórios ocultos</td>
+    <td>/admin, /backup, /test, /uploads</td>
+  </tr>
+  <tr>
+    <td>Arquivos sensíveis</td>
+    <td>config.php, db_backup.zip, .git/, index.old.html</td>
+  </tr>
+</table>
+
+<h3>➡️Exemplo de comando Gobuster no <code>earth.local</code>:</h3>
+
+<pre><code>gobuster dir -u http://earth.local -w /usr/share/wordlists/dirb/common.txt</code></pre>
+
+<h3>Explicação:</h3>
+
+<ul>
+  <li><strong>dir</strong> → Modo de força bruta em diretórios.</li>
+  <li><strong>-u http://earth.local</strong> → URL alvo.</li>
+  <li><strong>-w</strong> → Caminho da <em>wordlist</em> que o Gobuster vai usar.</li>
+</ul>
+
 
   
 
