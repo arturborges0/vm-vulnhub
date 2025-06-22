@@ -213,13 +213,16 @@ Esse arquivo funciona como uma <strong>tabela de resolução de nomes local</str
 
 <pre><code>gobuster dir -u http://earth.local -w /usr/share/wordlists/dirb/common.txt</code></pre>
 
-<h3>Explicação:</h3>
+<p><strong>Explicação:</strong></p>
 
 <ul>
   <li><strong>dir</strong> → Modo de força bruta em diretórios.</li>
   <li><strong>-u http://earth.local</strong> → URL alvo.</li>
   <li><strong>-w</strong> → Caminho da <em>wordlist</em> que o Gobuster vai usar.</li>
 </ul>
+
+  <p>Existem mais wordlists para usar com o gobuster, como big.txt e seclists.txt, são listas maiores que
+  consequentemente fazem mais tentativas de buscas por diretórios etc. Mas para essse lab, a common.txt basta para nós.</p>
 
 
   
