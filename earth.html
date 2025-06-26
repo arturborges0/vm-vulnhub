@@ -224,6 +224,14 @@ Esse arquivo funciona como uma <strong>tabela de resolução de nomes local</str
   <p>Existem mais wordlists para usar com o gobuster, como big.txt e seclists.txt, são listas maiores que
   consequentemente fazem mais tentativas de buscas por diretórios etc. Mas para essse lab, a common.txt basta para nós.</p>
 
+  <p>Após rodar o gobuster com o comando citado acima, esse foi o resultado:</p>
+
+<img src="https://cdn-images-1.medium.com/max/1000/1*jHmDVzIUk01btmHXPgikDg.png" alt="Resultado gobuster">
+
+  <p>Percebemos que foram encontrados dois diretórios vulneráveis nesse domínio, o /admin que possuí o painel administrativo do site
+  e é uma grande porta de entrada para explorações mais profundas. Já o /cgi-bin/ é um diretório usado para armazenar scripts executáveis (em Perl, Bash, Python, etc.) que o servidor roda no lado do servidor. 
+    É típico em servidores Apache com suporte a CGI (Common Gateway Interface).</p>
+
 
   
 
